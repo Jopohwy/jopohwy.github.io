@@ -1,0 +1,1131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Joshua Poh</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --white: #FFFFFF;
+    --off-white: #F8F8F6;
+    --black: #111110;
+    --gray-200: #E6E6E2;
+    --gray-400: #B0B0A8;
+    --gray-600: #6A6A64;
+    --accent-pop: #D4522A;
+    --text-primary: #111110;
+    --text-secondary: #6A6A64;
+    --text-muted: #B0B0A8;
+    --border: rgba(17,17,16,0.07);
+    --border-mid: rgba(17,17,16,0.12);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--white);
+    color: var(--text-primary);
+    font-size: 16px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 200;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 0.5px solid var(--border);
+    padding: 0 5vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 56px;
+  }
+
+  .nav-logo {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 17px;
+    font-weight: 500;
+    color: var(--black);
+    text-decoration: none;
+    letter-spacing: 0.01em;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+    align-items: center;
+  }
+
+  .nav-links a {
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--text-secondary);
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    transition: color 0.15s;
+  }
+
+  .nav-links a:hover { color: var(--black); }
+
+  .nav-cta {
+    color: var(--white) !important;
+    background: var(--black);
+    padding: 7px 18px;
+    border-radius: 100px;
+    transition: opacity 0.15s !important;
+  }
+
+  .nav-cta:hover { opacity: 0.7 !important; }
+
+  /* ── HERO ── */
+  .hero-wrap {
+    max-width: 1160px;
+    margin: 0 auto;
+    padding: 0 5vw;
+  }
+
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 120px 0 80px;
+  }
+
+  .hero-overline {
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 2.5rem;
+  }
+
+  .hero-headline {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: clamp(48px, 6.5vw, 96px);
+    font-weight: 400;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    color: var(--black);
+    margin-bottom: 3rem;
+  }
+
+  .hero-headline em {
+    font-style: italic;
+    color: var(--gray-600);
+  }
+
+  .hero-bottom {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 4rem;
+    flex-wrap: wrap;
+    padding-top: 2rem;
+    border-top: 0.5px solid var(--border);
+  }
+
+  .hero-tagline {
+    font-size: 17px;
+    color: var(--text-secondary);
+    max-width: 440px;
+    line-height: 1.8;
+    font-weight: 300;
+  }
+
+  .hero-pills {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding-top: 2px;
+  }
+
+  .hero-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 14px;
+    border: 0.5px solid var(--border-mid);
+    border-radius: 100px;
+    font-size: 12px;
+    color: var(--text-secondary);
+    white-space: nowrap;
+  }
+
+  .hero-pill .dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--accent-pop);
+    flex-shrink: 0;
+  }
+
+  /* ── BAND ── */
+  .band {
+    background: var(--off-white);
+    border-top: 0.5px solid var(--border);
+    border-bottom: 0.5px solid var(--border);
+    padding: 1rem 5vw;
+  }
+
+  .band-inner {
+    max-width: 1160px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    align-items: center;
+  }
+
+  .band-item {
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    white-space: nowrap;
+  }
+
+  /* ── SECTION SHELL ── */
+  section { padding: 100px 5vw; }
+
+  .section-inner {
+    max-width: 1160px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 0.5rem;
+  }
+
+  .section-title {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: clamp(28px, 3vw, 42px);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    color: var(--black);
+    line-height: 1.15;
+    margin-bottom: 3.5rem;
+  }
+
+  .section-title em { font-style: italic; color: var(--gray-600); }
+
+  /* ── ABOUT ── */
+  #about { background: var(--white); }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 7rem;
+    align-items: start;
+  }
+
+  .about-sticky {
+    position: sticky;
+    top: 76px;
+  }
+
+  .stat-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--border-mid);
+    border: 0.5px solid var(--border-mid);
+    border-radius: 12px;
+    overflow: hidden;
+    margin-top: 2rem;
+  }
+
+  .stat-cell {
+    background: var(--white);
+    padding: 1.2rem;
+  }
+
+  .stat-num {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 30px;
+    font-weight: 500;
+    color: var(--black);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .stat-num.pop { color: var(--accent-pop); }
+
+  .stat-desc {
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.4;
+  }
+
+  .tag-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    margin-top: 1.8rem;
+  }
+
+  .tag {
+    font-size: 12px;
+    padding: 4px 12px;
+    border: 0.5px solid var(--border-mid);
+    border-radius: 100px;
+    color: var(--text-secondary);
+  }
+
+  .about-body p {
+    font-size: 16px;
+    color: var(--text-secondary);
+    line-height: 1.85;
+    margin-bottom: 1.3rem;
+    font-weight: 300;
+  }
+
+  .about-body p strong { color: var(--black); font-weight: 500; }
+
+  /* ── EXPERIENCE ── */
+  #experience { background: var(--off-white); }
+
+  .exp-row {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: 3.5rem;
+    padding: 2.5rem 0;
+    border-top: 0.5px solid var(--border-mid);
+    align-items: start;
+  }
+
+  .exp-row:last-child { border-bottom: 0.5px solid var(--border-mid); }
+
+  .exp-date {
+    font-size: 12px;
+    color: var(--text-muted);
+    letter-spacing: 0.03em;
+    margin-bottom: 4px;
+    padding-top: 3px;
+  }
+
+  .exp-company {
+    font-size: 11px;
+    color: var(--accent-pop);
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .exp-role {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--black);
+    line-height: 1.25;
+    margin-bottom: 0.8rem;
+  }
+
+  .exp-desc {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.8;
+    font-weight: 300;
+    max-width: 580px;
+  }
+
+  .exp-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 1rem;
+  }
+
+  .exp-chip {
+    font-size: 11px;
+    padding: 3px 10px;
+    background: var(--white);
+    border: 0.5px solid var(--border-mid);
+    color: var(--text-muted);
+    border-radius: 100px;
+  }
+
+  /* ── CALLOUT ── */
+  .callout {
+    background: var(--black);
+    padding: 72px 5vw;
+  }
+
+  .callout-inner {
+    max-width: 1160px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1px;
+    background: rgba(255,255,255,0.07);
+    border: 0.5px solid rgba(255,255,255,0.07);
+    border-radius: 16px;
+    overflow: hidden;
+  }
+
+  .callout-cell {
+    background: var(--black);
+    padding: 2.5rem 2rem;
+  }
+
+  .callout-num {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 42px;
+    font-weight: 400;
+    color: var(--white);
+    line-height: 1;
+    margin-bottom: 0.6rem;
+  }
+
+  .callout-num.pop { color: var(--accent-pop); }
+
+  .callout-title {
+    font-size: 14px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.75);
+    margin-bottom: 0.4rem;
+  }
+
+  .callout-sub {
+    font-size: 13px;
+    color: rgba(255,255,255,0.3);
+    line-height: 1.6;
+    font-weight: 300;
+  }
+
+  /* ── EDUCATION ── */
+  #education { background: var(--white); }
+
+  .edu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1px;
+    background: var(--border-mid);
+    border: 0.5px solid var(--border-mid);
+    border-radius: 14px;
+    overflow: hidden;
+  }
+
+  .edu-card {
+    background: var(--white);
+    padding: 1.8rem;
+    transition: background 0.15s;
+  }
+
+  .edu-card:hover { background: var(--off-white); }
+
+  .edu-school {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 0.6rem;
+  }
+
+  .edu-degree {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--black);
+    line-height: 1.2;
+    margin-bottom: 0.35rem;
+  }
+
+  .edu-detail {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+  }
+
+  .edu-badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 100px;
+    border: 0.5px solid var(--border-mid);
+    color: var(--text-secondary);
+  }
+
+  .edu-badge.pop {
+    background: var(--accent-pop);
+    border-color: var(--accent-pop);
+    color: var(--white);
+  }
+
+  /* ── SKILLS ── */
+  #skills { background: var(--off-white); }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 2.5rem;
+  }
+
+  .skill-group h3 {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 1.2rem;
+    padding-bottom: 0.7rem;
+    border-bottom: 0.5px solid var(--border-mid);
+  }
+
+  .skill-items {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .skill-items li {
+    font-size: 14px;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 300;
+  }
+
+  .skill-items li::before {
+    content: '';
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: var(--gray-400);
+    flex-shrink: 0;
+  }
+
+  /* ── VENTURES ── */
+  #projects { background: var(--white); }
+
+  .ventures-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.2rem;
+  }
+
+  .venture-card {
+    border: 0.5px solid var(--border-mid);
+    border-radius: 14px;
+    padding: 1.8rem;
+    text-decoration: none;
+    background: var(--white);
+    display: flex;
+    flex-direction: column;
+    transition: border-color 0.15s, background 0.15s;
+  }
+
+  .venture-card:hover { border-color: var(--black); background: var(--off-white); }
+
+  .vc-type {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 0.8rem;
+  }
+
+  .vc-badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 100px;
+    background: var(--accent-pop);
+    color: var(--white);
+    margin-bottom: 0.8rem;
+    align-self: flex-start;
+  }
+
+  .vc-name {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--black);
+    line-height: 1.2;
+    margin-bottom: 0.8rem;
+  }
+
+  .vc-desc {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.75;
+    font-weight: 300;
+    flex: 1;
+  }
+
+  .vc-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--black);
+    margin-top: 1.4rem;
+  }
+
+  .vc-link::after { content: ' ↗'; }
+
+  /* ── CONTACT ── */
+  #contact { background: var(--off-white); }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 7rem;
+    align-items: start;
+  }
+
+  .contact-headline {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: clamp(36px, 4vw, 56px);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    color: var(--black);
+    margin-bottom: 1.5rem;
+  }
+
+  .contact-headline em { font-style: italic; color: var(--gray-600); }
+
+  .contact-blurb {
+    font-size: 16px;
+    color: var(--text-secondary);
+    line-height: 1.8;
+    font-weight: 300;
+    margin-bottom: 2.5rem;
+  }
+
+  .contact-links-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    background: var(--border-mid);
+    border: 0.5px solid var(--border-mid);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .contact-links-list li a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.2rem;
+    background: var(--white);
+    text-decoration: none;
+    transition: background 0.15s;
+  }
+
+  .contact-links-list li a:hover { background: var(--off-white); }
+
+  .cl-label {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 2px;
+  }
+
+  .cl-val { font-size: 14px; color: var(--black); }
+  .cl-arrow { color: var(--gray-400); font-size: 15px; }
+
+  .contact-form { display: flex; flex-direction: column; gap: 1rem; }
+  .form-field { display: flex; flex-direction: column; gap: 5px; }
+
+  .form-field label {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  .form-field input, .form-field textarea {
+    background: var(--white);
+    border: 0.5px solid var(--border-mid);
+    border-radius: 8px;
+    padding: 11px 14px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    color: var(--black);
+    outline: none;
+    transition: border-color 0.15s;
+    resize: vertical;
+  }
+
+  .form-field input:focus, .form-field textarea:focus { border-color: var(--black); }
+
+  .form-field input::placeholder, .form-field textarea::placeholder {
+    color: var(--text-muted);
+    font-weight: 300;
+  }
+
+  .btn-send {
+    align-self: flex-start;
+    padding: 11px 24px;
+    background: var(--black);
+    color: var(--white);
+    border: none;
+    border-radius: 100px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: opacity 0.15s;
+  }
+
+  .btn-send:hover { opacity: 0.7; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--black);
+    padding: 1.8rem 5vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  footer p, footer a {
+    font-size: 12px;
+    color: rgba(255,255,255,0.25);
+    text-decoration: none;
+    letter-spacing: 0.03em;
+    transition: color 0.15s;
+  }
+
+  footer a:hover { color: rgba(255,255,255,0.6); }
+
+  .divider { border: none; border-top: 0.5px solid var(--border); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .about-sticky { position: static; }
+    .exp-row { grid-template-columns: 1fr; gap: 0.5rem; }
+    .callout-inner { grid-template-columns: 1fr; }
+    .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+  }
+
+  @media (max-width: 640px) {
+    .nav-links li:nth-child(n+4) { display: none; }
+    .hero-bottom { flex-direction: column; gap: 1.5rem; }
+    .hero-pills { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Joshua Poh</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Ventures</a></li>
+    <li><a href="#contact" class="nav-cta">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero-wrap">
+  <div class="hero">
+    <p class="hero-overline">Based in Singapore &nbsp;&middot;&nbsp; Open to opportunities</p>
+    <h1 class="hero-headline">
+      Finance.<br>
+      Strategy.<br>
+      <em>Curiosity.</em>
+    </h1>
+    <div class="hero-bottom">
+      <p class="hero-tagline">
+        LSE graduate with experience across M&amp;A due diligence, location analytics, and investment research. Rigorous analysis in service of real outcomes.
+      </p>
+      <div class="hero-pills">
+        <div class="hero-pill"><span class="dot"></span> 1st Place &mdash; Deloitte Amplify GenAI</div>
+        <div class="hero-pill">LSE MSc Global Management</div>
+        <div class="hero-pill">Deloitte &middot; CACI &middot; MFC Equity</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- BAND -->
+<div class="band">
+  <div class="band-inner">
+    <span class="band-item">M&amp;A Due Diligence</span>
+    <span class="band-item">Location Analytics</span>
+    <span class="band-item">Equity Research</span>
+    <span class="band-item">Generative AI</span>
+    <span class="band-item">Strategy Consulting</span>
+    <span class="band-item">B2B Distribution</span>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-sticky">
+        <p class="section-label">About</p>
+        <h2 class="section-title" style="margin-bottom:1.2rem;">A little<br>about me</h2>
+        <div class="stat-grid">
+          <div class="stat-cell">
+            <div class="stat-num pop">1st</div>
+            <div class="stat-desc">Deloitte Amplify GenAI Challenge</div>
+          </div>
+          <div class="stat-cell">
+            <div class="stat-num">3 yr</div>
+            <div class="stat-desc">Live investment fund research</div>
+          </div>
+          <div class="stat-cell">
+            <div class="stat-num">MSc</div>
+            <div class="stat-desc">LSE Global Management, Merit</div>
+          </div>
+          <div class="stat-cell">
+            <div class="stat-num">1st</div>
+            <div class="stat-desc">BSc Accounting &amp; Finance, Bayes</div>
+          </div>
+        </div>
+        <div class="tag-row">
+          <span class="tag">M&amp;A Advisory</span>
+          <span class="tag">Financial Analysis</span>
+          <span class="tag">Strategy</span>
+          <span class="tag">Generative AI</span>
+          <span class="tag">Mandarin Fluent</span>
+          <span class="tag">Entrepreneurship</span>
+        </div>
+      </div>
+      <div class="about-body">
+        <p>
+          I'm Joshua, a recent graduate from LSE's MSc Global Management programme with a <strong>First Class Honours in Accounting and Finance</strong> from Bayes Business School. My background spans M&amp;A financial due diligence at Deloitte, spatial analytics at CACI, and three years of equity research within a student-run live investment fund.
+        </p>
+        <p>
+          What draws me to the intersection of finance and strategy is the same thing that drew me to launch my own distribution business: the belief that <strong>sharp analysis and clear thinking should lead to something real</strong>. I'm comfortable with ambiguity, energised by complex problems, and genuinely curious about how businesses create and sustain competitive advantage.
+        </p>
+        <p>
+          Beyond the professional, I am currently completing the <strong>SUTD Certified Generative AI Professional programme</strong>, and I hold a Deloitte Amplify GenAI Business Case Challenge first-place win — presented to a Partner and C-suite panel on AI transformation in hospitality.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-inner">
+    <p class="section-label">Experience</p>
+    <h2 class="section-title">Where I've worked</h2>
+
+    <div class="exp-row">
+      <div>
+        <p class="exp-date">Jun &ndash; Sep 2023</p>
+        <p class="exp-company">Deloitte UK</p>
+      </div>
+      <div>
+        <h3 class="exp-role">M&amp;A Financial Due Diligence Analyst</h3>
+        <p class="exp-desc">Supported financial due diligence engagements for mid-market M&amp;A transactions, building financial models, analysing quality of earnings, and synthesising findings for client-facing reports. Developed fluency in normalised EBITDA analysis and working capital assessments across multiple sectors.</p>
+        <div class="exp-chips">
+          <span class="exp-chip">Financial Modelling</span>
+          <span class="exp-chip">Due Diligence</span>
+          <span class="exp-chip">M&amp;A</span>
+          <span class="exp-chip">Client Reporting</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-row">
+      <div>
+        <p class="exp-date">Jan &ndash; Apr 2023</p>
+        <p class="exp-company">CACI Ltd</p>
+      </div>
+      <div>
+        <h3 class="exp-role">Locations Analytics Associate</h3>
+        <p class="exp-desc">Applied geospatial data and consumer segmentation models to deliver location strategy insights for retail and commercial clients. Contributed to a repositioning of how the team packaged analytical outputs to SME clients, broadening the addressable market beyond enterprise mandates.</p>
+        <div class="exp-chips">
+          <span class="exp-chip">Geospatial Analytics</span>
+          <span class="exp-chip">Market Segmentation</span>
+          <span class="exp-chip">Client Strategy</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-row">
+      <div>
+        <p class="exp-date">2020 &ndash; 2023</p>
+        <p class="exp-company">MFC Equity</p>
+      </div>
+      <div>
+        <h3 class="exp-role">Student Investment Analyst</h3>
+        <p class="exp-desc">Three-year commitment as part of a student-led live investment fund. Conducted equity research across sectors, developed investment theses, and presented recommendations to a panel of peers and faculty. Built strong foundations in fundamental analysis, valuation, and portfolio thinking.</p>
+        <div class="exp-chips">
+          <span class="exp-chip">Equity Research</span>
+          <span class="exp-chip">Valuation</span>
+          <span class="exp-chip">Investment Thesis</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-row">
+      <div>
+        <p class="exp-date">2018 &ndash; 2020</p>
+        <p class="exp-company">Republic of Singapore Navy</p>
+      </div>
+      <div>
+        <h3 class="exp-role">Navy Instructor, RSN</h3>
+        <p class="exp-desc">Served as an instructor with a top-5% cohort ranking and a 100% trainee pass rate. Developed strong communication, structured teaching methodology, and the ability to translate complex technical content into accessible formats under accountability.</p>
+        <div class="exp-chips">
+          <span class="exp-chip">Instruction &amp; Training</span>
+          <span class="exp-chip">Leadership</span>
+          <span class="exp-chip">Communication</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CALLOUT -->
+<div class="callout">
+  <div class="callout-inner">
+    <div class="callout-cell">
+      <div class="callout-num pop">1st</div>
+      <div class="callout-title">Deloitte Amplify GenAI Challenge</div>
+      <div class="callout-sub">AI transformation strategy for hospitality, presented to C-suite and Partners</div>
+    </div>
+    <div class="callout-cell">
+      <div class="callout-num">LSE</div>
+      <div class="callout-title">MSc Global Management, Merit</div>
+      <div class="callout-sub">Exchange at University of Chicago Booth School of Business</div>
+    </div>
+    <div class="callout-cell">
+      <div class="callout-num">1st</div>
+      <div class="callout-title">BSc Accounting &amp; Finance</div>
+      <div class="callout-sub">First Class Honours, Bayes Business School, City University of London</div>
+    </div>
+  </div>
+</div>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="section-inner">
+    <p class="section-label">Education</p>
+    <h2 class="section-title">Academic background</h2>
+    <div class="edu-grid">
+      <div class="edu-card">
+        <p class="edu-school">London School of Economics</p>
+        <h3 class="edu-degree">MSc Global Management</h3>
+        <p class="edu-detail">2023 &ndash; 2024</p>
+        <span class="edu-badge">Merit</span>
+      </div>
+      <div class="edu-card">
+        <p class="edu-school">Bayes Business School</p>
+        <h3 class="edu-degree">BSc Accounting &amp; Finance</h3>
+        <p class="edu-detail">2020 &ndash; 2023</p>
+        <span class="edu-badge pop">First Class Honours</span>
+      </div>
+      <div class="edu-card">
+        <p class="edu-school">University of Chicago Booth</p>
+        <h3 class="edu-degree">Exchange Programme</h3>
+        <p class="edu-detail">Semester abroad &middot; Business coursework</p>
+        <span class="edu-badge">Exchange Scholar</span>
+      </div>
+      <div class="edu-card">
+        <p class="edu-school">Singapore Polytechnic</p>
+        <h3 class="edu-degree">Diploma in Marine Engineering</h3>
+        <p class="edu-detail">Technical foundation &middot; Singapore</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-inner">
+    <p class="section-label">Skills &amp; Certifications</p>
+    <h2 class="section-title">What I bring</h2>
+    <div class="skills-grid">
+      <div class="skill-group">
+        <h3>Finance &amp; Analysis</h3>
+        <ul class="skill-items">
+          <li>Financial modelling &amp; valuation</li>
+          <li>M&amp;A due diligence</li>
+          <li>Equity research &amp; fundamental analysis</li>
+          <li>Quality of earnings analysis</li>
+          <li>WSO Certified</li>
+        </ul>
+      </div>
+      <div class="skill-group">
+        <h3>Strategy &amp; Consulting</h3>
+        <ul class="skill-items">
+          <li>Market sizing &amp; competitive analysis</li>
+          <li>Go-to-market strategy</li>
+          <li>Business case development</li>
+          <li>Stakeholder presentation</li>
+          <li>Client-facing reporting</li>
+        </ul>
+      </div>
+      <div class="skill-group">
+        <h3>Technology &amp; Data</h3>
+        <ul class="skill-items">
+          <li>Generative AI applications</li>
+          <li>Geospatial / location analytics</li>
+          <li>Advanced Excel &amp; financial tools</li>
+          <li>SUTD Certified Gen AI Professional (in progress)</li>
+        </ul>
+      </div>
+      <div class="skill-group">
+        <h3>Languages &amp; Other</h3>
+        <ul class="skill-items">
+          <li>English (native)</li>
+          <li>Mandarin (fluent)</li>
+          <li>Entrepreneurship &amp; SME operations</li>
+          <li>B2B sales &amp; distribution</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- VENTURES -->
+<section id="projects">
+  <div class="section-inner">
+    <p class="section-label">Projects &amp; Ventures</p>
+    <h2 class="section-title">Beyond the desk</h2>
+    <div class="ventures-grid">
+      <a href="https://jopohwy.github.io/pts-hair-skin-care" class="venture-card" target="_blank" rel="noopener">
+        <p class="vc-type">Entrepreneurial Venture &middot; Singapore</p>
+        <h3 class="vc-name">PTS Hair &amp; Skin Care</h3>
+        <p class="vc-desc">Sole proprietor and exclusive Singapore distributor for NK Goldilocks, a Korean professional hair care brand. B2B distribution to salons across Singapore.</p>
+        <span class="vc-link">Visit company site</span>
+      </a>
+      <div class="venture-card">
+        <span class="vc-badge">1st Place</span>
+        <p class="vc-type">AI Business Case</p>
+        <h3 class="vc-name">Deloitte Amplify GenAI Challenge</h3>
+        <p class="vc-desc">Developed and presented an AI transformation strategy for the hospitality sector to a panel of Deloitte Partners and C-suite executives.</p>
+      </div>
+      <div class="venture-card">
+        <p class="vc-type">Investment Research &middot; 3 Years</p>
+        <h3 class="vc-name">MFC Equity Student Fund</h3>
+        <p class="vc-desc">Three-year commitment to a student-led live investment fund. Full-cycle equity research: screening, fundamental analysis, thesis writing, and panel presentations.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="contact-grid">
+      <div>
+        <p class="section-label">Contact</p>
+        <h2 class="contact-headline">Let's<br><em>talk.</em></h2>
+        <p class="contact-blurb">Whether you're a recruiter, a company exploring a hire, or someone curious about my distribution venture — I'm always open to a conversation.</p>
+        <ul class="contact-links-list">
+          <li>
+            <a href="mailto:your@email.com">
+              <div><p class="cl-label">Email</p><p class="cl-val">your@email.com</p></div>
+              <span class="cl-arrow">&#8599;</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener">
+              <div><p class="cl-label">LinkedIn</p><p class="cl-val">linkedin.com/in/yourprofile</p></div>
+              <span class="cl-arrow">&#8599;</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://jopohwy.github.io/pts-hair-skin-care" target="_blank" rel="noopener">
+              <div><p class="cl-label">Company</p><p class="cl-val">PTS Hair &amp; Skin Care</p></div>
+              <span class="cl-arrow">&#8599;</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <form class="contact-form" onsubmit="handleSubmit(event)">
+          <div class="form-field">
+            <label for="name">Name</label>
+            <input type="text" id="name" placeholder="Your name" required>
+          </div>
+          <div class="form-field">
+            <label for="email">Email</label>
+            <input type="email" id="email" placeholder="your@email.com" required>
+          </div>
+          <div class="form-field">
+            <label for="message">Message</label>
+            <textarea id="message" rows="5" placeholder="What would you like to discuss?" required></textarea>
+          </div>
+          <button type="submit" class="btn-send">Send message &rarr;</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>&copy; 2025 Joshua Poh. All rights reserved.</p>
+  <a href="https://jopohwy.github.io/pts-hair-skin-care" target="_blank" rel="noopener">PTS Hair &amp; Skin Care &rarr;</a>
+</footer>
+
+<script>
+function handleSubmit(e) {
+  e.preventDefault();
+  const btn = e.target.querySelector('button[type="submit"]');
+  btn.textContent = 'Message sent ✓';
+  btn.disabled = true;
+  btn.style.opacity = '0.5';
+  setTimeout(() => {
+    btn.textContent = 'Send message →';
+    btn.disabled = false;
+    btn.style.opacity = '';
+    e.target.reset();
+  }, 3000);
+}
+</script>
+
+</body>
+</html>
